@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 // Components
 import EntertainmentCardSlider from "../components/Entertainment/EntertainmentCard.Component";
 import HeroCarousel from "../components/HeroCarousel/HeroCarousel.Component";
@@ -11,6 +12,14 @@ const Homepage = () => {
   const [recommendedMovies, setRecommendedMovies] = useState([]);
   const [premierMovies, setPremierMovies] = useState([]);
   const [onlineStreamEvent, setOnlineStreamEvent] = useState([]);
+  
+  useEffect(() => {
+    const requestTopRatedMovies = async () => {
+      const getTopRatedMovies = await axios.get("https://api.themoviedb.org/3/movie/top_rated?api_key=d4182b00a561021c5ff7e3a953a8563a&language=en-US&page=1");
+      setRecommendedMovies(getTopRatedMovies.data.results);
+    };
+     requestTopRatedMovies();
+  }, []);
   
   
   return (
@@ -26,7 +35,7 @@ const Homepage = () => {
 
     <div className="container mx-auto px-4 md:px-12 my-8">
     <PosterSlider title= "Recommended Movies"
-    subject= "List of recommended movies" 
+    subtitle= "List of recommended movies" 
     posters= {recommendedMovies}
     isDark={false} 
     />
@@ -39,8 +48,9 @@ const Homepage = () => {
         </div>
 
     <div>
-    <PosterSlider title= "Recommended Movies"
-    subject= "Brand new releases every Friday" 
+    <PosterSlider 
+    title= "Recommended Movies"
+    subtitle= "Brand new releases every Friday" 
     posters= {premierMovies}
     isDark={true} 
     />
