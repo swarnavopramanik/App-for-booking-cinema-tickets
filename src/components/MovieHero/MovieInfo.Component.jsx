@@ -1,15 +1,17 @@
 import React, { useContext } from "react";
-
+import PaymentModel from "../Payment/Payment.Component";
 import { MovieContext } from "../../context/Movie.context";
 
 const MovieInfo = ({ movie }) => {
-  const { price, setIsOpen, isOpen, rentMovie, buyMovie } =
-    useContext(MovieContext);
+  const {price, setIsOpen, isOpen, rentMovie, buyMovie} = useContext(MovieContext)
+  
   const genres = movie.genres?.map(({ name }) => name).join(", ");
+
+  
 
   return (
     <>
-     { /* <PaymentModel setIsOpen={setIsOpen} isOpen={isOpen} price={price} /> */ }
+     <PaymentModel setIsOpen={setIsOpen} isOpen={isOpen} price={price} /> 
       <div className="flex flex-col gap-8">
         <h1 className="text-white text-5xl font-bold">
           {movie.original_title}
