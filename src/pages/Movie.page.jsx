@@ -63,36 +63,37 @@ const MoviePage = () => {
   const settings = {
     infinite: false,
     speed: 500,
-    slidesToSlow: 4,
+    slidesToShow: 4,
     slidesToScroll: 4,
-    initialSlider: 0,
+    initialSlide: 0,
     responsive: [
       {
-        breackpoint: 1024,
+        breakpoint: 1024,
         settings: {
-          slidesToSlow: 3,
+          slidesToShow: 3,
           slidesToScroll: 3,
-        }
+        },
       },
       {
-        breackpoint: 600,
+        breakpoint: 600,
         settings: {
-          slidesToSlow: 2,
+          slidesToShow: 2,
           slidesToScroll: 2,
           initialSlide: 3,
-        }
+        },
       },
       {
-        breackpoint: 480,
+        breakpoint: 480,
         settings: {
-          slidesToSlow: 3,
+          slidesToShow: 3,
           slidesToScroll: 1,
           initialSlide: 4,
-        }
-      }
-    ]
-    
+        },
+      },
+    ],
   };
+    
+  
 
  
   

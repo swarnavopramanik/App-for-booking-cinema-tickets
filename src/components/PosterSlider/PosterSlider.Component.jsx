@@ -34,7 +34,7 @@ const PosterSlider = (props) => {
           slidesToScroll: 1,
         },
       },
-    ]
+    ],
   };
 
   return (
@@ -65,6 +65,8 @@ const PosterSlider = (props) => {
           ))}
         </Slider>
       )}
+  
+    
     </>
   );
 };
