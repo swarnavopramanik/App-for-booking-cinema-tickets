@@ -6,6 +6,7 @@ import { MovieContext } from "../context/Movie.context";
 import Slider from "react-slick";
 import {FaCcVisa, FaCcApplePay} from "react-icons/fa";
 import PosterSlider from "../components/PosterSlider/PosterSlider.Component";
+import MovieHero from "../components/MovieHero/MovieHero.Component";
 
 const MoviePage = () => {
   
@@ -46,17 +47,59 @@ const MoviePage = () => {
     requestRecommendedMovies();
   }, [id]);
 
+  useEffect(( ) => {
+    const requestMovie = async () => {
+      const getMovieData = await axios.get(`/movie/${id}`);
+      setMovie(getMovieData.data);
+    }
+
+    requestMovie();
+  }, [id])
+
 
 
   const settingCast = {};
 
-  const settings = {};
+  const settings = {
+    infinite: false,
+    speed: 500,
+    slidesToSlow: 4,
+    slidesToScroll: 4,
+    initialSlider: 0,
+    responsive: [
+      {
+        breackpoint: 1024,
+        settings: {
+          slidesToSlow: 3,
+          slidesToScroll: 3,
+        }
+      },
+      {
+        breackpoint: 600,
+        settings: {
+          slidesToSlow: 2,
+          slidesToScroll: 2,
+          initialSlide: 3,
+        }
+      },
+      {
+        breackpoint: 480,
+        settings: {
+          slidesToSlow: 3,
+          slidesToScroll: 1,
+          initialSlide: 4,
+        }
+      }
+    ]
+    
+  };
 
  
   
   return (
-    <>{/* <MovieHero/> */ }
-    <div className="my-12 container px-4 lg-ml-20 lg:w-2/1">
+    <>
+    <MovieHero />
+    <div className="my-12 container px-4 lg-ml-20 lg:w-2/3">
     <div className="flex flex-col items-start gap-3">
       <h1 className=" text-gray-800 font-bold text-2xl">
         About the movie
@@ -73,7 +116,7 @@ const MoviePage = () => {
         <h2 className=" text-gray-800 font-bold text-2xl mb-3">
           Applicable offers
         </h2>
-        <div className="flex flex-col gap-3 lg:flex-row ">
+        <div className="flex flex-col gap-3 lg:flex-row">
           <div className="flex items-start gap-2 bg-yellow-100 p-3 border-yellow-400 border-dashed border-2 rounded-md">
             <div className="w-8 h-8">
             <FaCcVisa className="w-full h-full" />
