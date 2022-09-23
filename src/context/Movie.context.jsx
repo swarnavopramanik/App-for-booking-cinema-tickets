@@ -28,6 +28,7 @@ const MovieProvider = ({ children }) => {
     return (
         <MovieContext.Provider value={{ movie, setMovie,
           isOpen,
+          setIsOpen,
           price,
           setPrice,
           rentMovie,
