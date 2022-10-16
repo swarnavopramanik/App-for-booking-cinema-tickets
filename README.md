@@ -1,4 +1,8 @@
 # Getting Started with Create React App  😎😎
+# Book My Show Clone 
+
+![image](https://user-images.githubusercontent.com/105142693/196045882-9ac8f452-9371-4027-8dfe-2739aee7b852.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
